@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"lib": ["ESNext"],
-		"module": "NodeNext",
+		"module": "nodenext",
 		"target": "esnext",
 		"moduleResolution": "nodenext",
 		"moduleDetection": "force",

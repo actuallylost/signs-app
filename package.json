@@ -1,24 +1,23 @@
 {
-  "name": "signs-app",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.0.1"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.1"
-  }
+	"name": "tveeter",
+	"license": "GNU GPLv3",
+	"module": "index.ts",
+	"type": "module",
+	"scripts": {
+		"prepare": "husky install"
+	},
+	"dependencies": {
+		"@nestjs/mapped-types": "*",
+		"husky": "^8.0.3"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^17.5.1",
+		"@commitlint/config-conventional": "^17.4.4",
+		"eslint-config-prettier": "^8.3.0",
+		"lint-staged": "^13.2.0",
+		"prettier": "^2.8.7"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	}
 }
