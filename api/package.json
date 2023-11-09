@@ -1,8 +1,8 @@
 {
-  "name": "api",
-  "version": "0.0.1",
+  "name": "@signs-app/api",
+  "version": "0.1.0",
   "description": "",
-  "author": "",
+  "author": "actuallylost",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

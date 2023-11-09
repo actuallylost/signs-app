@@ -1,5 +1,5 @@
 {
-	"name": "tveeter",
+	"name": "signs-app",
 	"license": "GNU GPLv3",
 	"module": "index.ts",
 	"type": "module",
