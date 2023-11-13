@@ -1,10 +1,5 @@
 use tauri::App;
 
-#[cfg(mobile)]
-mod mobile;
-#[cfg(mobile)]
-pub use mobile::*;
-
 pub type SetupHook = Box<dyn FnOnce(&mut App) -> Result<(), Box<dyn std::error::Error>> + Send>;
 
 #[derive(Default)]
@@ -42,5 +37,5 @@ impl AppBuilder {
 
 #[tauri::mobile_entry_point]
 fn main() {
-  super::AppBuilder::new().run();
+  AppBuilder::new().run();
 }
