@@ -1,0 +1,48 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "cargo prisma"
+    output   = "../src/prisma.rs"
+}
+
+model Profile {
+    id                Int                 @id
+    createdAt         DateTime            @default(now())
+    questionsAnswered AnsweredQuestions[]
+
+    @@unique([id])
+}
+
+model Question {
+    id              Int      @id
+    correctAnswerId Int
+    answers         Answer[]
+
+    answer            Answer              @relation(fields: [correctAnswerId], references: [id])
+    AnsweredQuestions AnsweredQuestions[]
+
+    @@unique([id])
+}
+
+model Answer {
+    id         Int @id
+    questionId Int
+
+    question          Question            @relation(fields: [questionId], references: [id])
+    AnsweredQuestions AnsweredQuestions[]
+}
+
+model AnsweredQuestions {
+    questionId Int
+    answerId   Int
+
+    question  Question @relation(fields: [questionId], references: [id])
+    answer    Answer   @relation(fields: [answerId], references: [id])
+    Profile   Profile? @relation(fields: [profileId], references: [id])
+    profileId Int?
+
+    @@id([questionId, answerId])
+}
