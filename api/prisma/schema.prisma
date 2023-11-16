@@ -9,40 +9,24 @@ generator client {
 }
 
 model Profile {
-    id                Int                 @id
-    createdAt         DateTime            @default(now())
-    questionsAnswered AnsweredQuestions[]
-
-    @@unique([id])
+    id        String             @unique @db.Uuid
+    responses ProfileResponses[]
 }
 
-model Question {
-    id              Int      @id
-    correctAnswerId Int
-    answers         Answer[]
-
-    answer            Answer              @relation(fields: [correctAnswerId], references: [id])
-    AnsweredQuestions AnsweredQuestions[]
-
-    @@unique([id])
+model QuestionAnswerEntry {
+    id               Int                @id
+    content          String
+    options          String[]
+    answerIndex      Int
+    ProfileResponses ProfileResponses[]
 }
 
-model Answer {
-    id         Int @id
-    questionId Int
+model ProfileResponses {
+    profileId String @unique
+    entryId   Int    @unique
 
-    question          Question            @relation(fields: [questionId], references: [id])
-    AnsweredQuestions AnsweredQuestions[]
-}
+    profile Profile?             @relation(fields: [profileId], references: [id])
+    entry   QuestionAnswerEntry? @relation(fields: [entryId], references: [id])
 
-model AnsweredQuestions {
-    questionId Int
-    answerId   Int
-
-    question  Question @relation(fields: [questionId], references: [id])
-    answer    Answer   @relation(fields: [answerId], references: [id])
-    Profile   Profile? @relation(fields: [profileId], references: [id])
-    profileId Int?
-
-    @@id([questionId, answerId])
+    @@id([profileId, entryId])
 }
