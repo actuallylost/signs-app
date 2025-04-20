@@ -2,4 +2,5 @@ packages:
   - web
 
 ignoredBuiltDependencies:
+  - '@prisma/client'
   - sharp
